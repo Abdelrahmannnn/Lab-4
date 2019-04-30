@@ -1,0 +1,227 @@
+
+
+package eg.edu.alexu.csd.datastructure.linkedList.cs41_cs13;
+
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.awt.*;
+
+public class call {
+
+	public static void main(String[] args) {
+		single x=new single ();
+		Polynomial k=new Polynomial();
+		node head=x.head;
+		Scanner s=new Scanner(System.in);
+		
+		
+		boolean e=true;
+		
+		while(e==true) {
+		
+		System.out.println("Please choose an action: ");
+		System.out.println("----------------------- ");
+		System.out.println("1- Set a polynomial variable ");
+		System.out.println("2- Print the value of a polynomial variable ");
+		System.out.println("3- Add two polynomials ");
+		System.out.println("4- Subtract two polynomials ");
+		System.out.println("5- Multiply two polynomials ");
+		System.out.println("6- Evaluate a polynomial at some point ");
+		System.out.println("7- Clear a polynomial variable ");
+		System.out.println("8- Exit ");
+		
+		int t=0;
+		char u ,n;
+		t=s.nextInt();
+		int j=0;
+		int c=0;
+		if(t==1) {
+			
+			System.out.println("Insert the variable name: A, B or C ");
+			u=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}else {
+			System.out.println("Insert the polynomial terms in the form: ");
+			System.out.println("(coeff1, exponent1), (coeff2, exponent2), .. ");
+			String y=s.next();
+			String m="";
+			int i=0;
+
+  		for ( i=0; i < y.length(); i++) {
+			    if(y.charAt(i)=='('||y.charAt(i)==')') {
+			       continue;
+			    }
+			    m=m+y.charAt(i);
+			}
+  		
+  		String [] a= m.split(",");
+  		int []b =new int[a.length];
+  		for(i=0;i<a.length;i++) {
+  			b[i]=Integer.parseInt(a[i]);
+  		}
+  		int flag =1;
+  		for ( i=1;i<b.length&&flag==1;i+=2){
+        	flag=0;
+            for( j=1;j<b.length-i-1;j+=2){
+                if(b[j]>b[j+2]){
+                    int  q=b[j];
+                    b[j]=b[j+2];
+                    b[j+2]=q;
+                    
+                    q=b[j-1];
+                    b[j-1]=b[j+1];
+                    b[j+1]=q;                   
+                    flag=1;
+                }
+            }
+  		}
+  		int [][]arr=new int [b.length/2][2];
+  		for(i=0;i<b.length;i++) {
+  			System.out.println(b[i]);
+  		}
+  		int co=0;
+  		for(i=0;i<b.length/2;i++) {
+  			for(j=0;j<2;j++) {
+  				arr[i][j]=b[co];
+  				co ++ ;
+  			}
+  		}
+  		
+  		
+  		k.setPolynomial(u, arr);
+  				
+		}
+			
+		}
+		
+		
+		else if(t==2) {
+			System.out.println("Insert the variable name: A, B or C ");
+			u=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			
+			}else {
+			String p = k.print(u);
+			System.out.print(p);
+			System.out.println();
+			}
+			
+			
+			
+		}
+		else if(t==3) {
+			System.out.println("Insert first variable name: A, B or C ");	
+			u=s.next().charAt(0);
+			System.out.println("Insert second variable name: A, B or C ");
+			n=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}
+			else if(n!='A'&&n!='B'&&n!='C') {
+				System.out.println("Run time exception ");
+			}else {
+				try {
+			
+			int [][] ar = k.add(u, n);
+				}catch(IllegalArgumentException ff) {
+					
+				}
+			}
+			
+		}
+		else if(t==4) {
+			System.out.println("Insert first variable name: A, B or C ");	
+			u=s.next().charAt(0);
+			System.out.println("Insert second variable name: A, B or C ");
+			n=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}
+			else if(n!='A'&&n!='B'&&n!='C') {
+				System.out.println("Run time exception ");
+			}else {
+				try {
+			int [][] ar = k.subtract(u, n);
+				}catch(IllegalArgumentException ff) {
+					
+				}
+			}
+			
+		}
+		else if(t==5) {
+			System.out.println("Insert first variable name: A, B or C ");	
+			u=s.next().charAt(0);
+			System.out.println("Insert second variable name: A, B or C ");
+			n=s.next().charAt(0);
+			try {
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}
+			else if(n!='A'&&n!='B'&&n!='C') {
+				System.out.println("Run time exception ");
+			}else {
+			int [][] ar = k.multiply(u, n);
+			for(j=0;j<ar.length;j++) {
+				for(c=0;c<2;c++) {
+					System.out.printf("%d ", ar[j][c]);
+				}
+				System.out.println();
+			}
+		}
+			} catch (IllegalArgumentException ff) {
+				
+				
+			}
+		}
+		
+		
+		
+		
+		else if(t==6) {
+			System.out.println("Insert the variable name: A, B or C ");
+			u=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}else {
+				System.out.println("Enter the polynomial constant value:  ");
+				int val = s.nextInt();
+			float o = k.evaluatePolynomial(u, val);
+			}
+		}
+		
+		
+		else if(t==7) {
+			System.out.println("Insert the variable name: A, B or C ");
+			
+			u=s.next().charAt(0);
+			if(u!='A'&&u!='B'&&u!='C') {
+				System.out.println("Run time exception ");
+			}else {
+			k.clearPolynomial(u);
+			}
+			
+		}
+		else if(t==8) {
+			e=false ;
+		}
+		else {
+			System.out.println("Run time exception ");
+		}
+		
+		
+		
+				
+				
+  		
+		}
+  		
+  		
+
+	
+		
+		
+	}		
+
+}
