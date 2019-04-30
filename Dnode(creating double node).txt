@@ -1,0 +1,35 @@
+
+
+
+
+package eg.edu.alexu.csd.datastructure.linkedList.cs41_cs13;
+
+public class Dnode {
+	Object value;
+	Dnode next,prev;
+	
+	public Dnode(Object r) {
+		this.value =r;
+	}
+	public Object getValue() {
+		return value ;		
+	}
+	
+	public Dnode getNext() {
+		return next ;
+	}
+	public void setvalue(Object k) {
+		value=k;
+	}
+	public void setnext(Dnode w) {
+		next = w;
+	}
+	
+	public void setprev(Dnode a) {
+		prev=a;
+	}
+	public Dnode  getprev(Dnode b) {
+		return prev;
+	}
+
+}
