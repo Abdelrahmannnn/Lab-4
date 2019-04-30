@@ -1,0 +1,150 @@
+
+
+
+public class single implements ILinkedList{
+	  node head=null;
+	  public void add (int index,Object element ) {
+		node w = new node (element);
+		node t =head;
+		if(index==0) {
+			w.setnext(head);
+			head=w;
+		}else {
+		for(int i=0;i<index -1;i++) {
+			t=t.getNext();
+		}
+		w.setnext(t.getNext());
+		t.setnext(w);
+		
+	}
+	}
+
+		public void add(Object element) {
+			node t=head;
+			node w = new node (element);
+			if(head==null) {
+				head=w;
+			}else {
+			while(t.getNext()!=null) {
+				t=t.getNext();
+			}
+			t.setnext(w);
+			}
+			
+		}
+		
+		public Object get (int index) {
+			int i=0;
+			node t=head;
+			if(head==null) {
+				return null;
+			}
+			while(i<=index) {
+				if(i==index) {
+					Object v=t.getValue();
+					return v;
+				}
+				t=t.getNext();
+				i++;
+			}
+			return null;
+		}
+		
+		public void set(int index, Object element) {
+			int i=0;
+			node t=head;
+			while(i<=index&&t!=null) {
+				if(i==index) {
+					t.setvalue(element);
+				}
+				t=t.getNext();
+			}
+		}
+		
+		public void clear() {
+			node t=head;
+			node temp=t;
+			while(temp.next!=null) {
+				temp=t.getNext();
+				t.setnext(null);
+				t=temp;
+			}
+			
+		}
+		public boolean isEmpty() {
+			if(head==null) {
+				return true ;
+			}
+			return false ;
+		}
+		
+		public void remove(int index) {
+			node t=head;
+			
+			if(index==0) {
+				head=head.getNext();
+				
+			}else {
+			 node current =head;
+			for(int i=0;i<index-1;i++) {
+				t=t.getNext();
+			}
+			current=t.getNext();
+			t.setnext(current.getNext());
+			}
+			
+		}
+		
+		public int size() {
+			if(head==null) {
+				return 0;
+			}
+			int count=0;
+			node t=head;
+			while(t!=null) {
+				count++;
+				t=t.next;
+			}
+			return count ;
+		}
+		
+		public ILinkedList sublist(int fromIndex, int toIndex) {
+			int i=0;
+			node t=head;
+			single x=new single();
+			while(i<=toIndex) {
+				if(i==fromIndex) {
+					head=t;
+				}
+				if(i==toIndex) {
+					t.setnext(null);
+				}
+				t=t.getNext();
+			}
+			return x;
+			
+		}
+		
+		public boolean contains(Object o) {
+			node t=head;
+			if(head==null) {
+				return false ;
+			}
+			while(t!=null) {
+				if(t.getValue()==o) {
+					return true;
+				}
+				t=t.getNext();
+			}
+			return false;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+}
