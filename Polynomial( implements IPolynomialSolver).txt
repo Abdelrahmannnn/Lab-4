@@ -1,0 +1,1155 @@
+
+
+
+
+
+package eg.edu.alexu.csd.datastructure.linkedList.cs41_cs13;
+
+import java.awt.Point;
+import static java.lang.Math.pow;
+
+public class Polynomial implements IPolynomialSolver {
+	single A=new single();
+	single B=new single();
+	single C=new single();
+	single R=new single();
+	
+	public void setPolynomial(char poly, int[][] terms) {
+		java.awt.Point [] a= new java.awt.Point [terms.length];
+		
+		int i=0,j=0;
+		
+		for (i=0;i<terms.length;i++) {
+			a[i]=new java.awt.Point ();
+		}
+		for( i=0;i<terms.length;i++) {
+			for( j=0;j<2;j++) {
+				if(j==0) {
+					a[i].x=terms[i][j];
+				}
+				a[i].y=terms[i][j];
+			}
+		}
+			for( i=0;i<a.length;i++) {
+				if(poly=='A') {
+				A.add(i,a[i]);
+				}else if(poly=='B') {
+					B.add(i,a[i]);
+				}else if(poly=='C') {
+					C.add(i,a[i]);
+				}
+			}			
+			
+		}
+	
+	public String print(char poly) {
+		node q=null;
+		int i=0;
+		int j=0;
+		String a="" ;
+       if(poly == 'A') {
+    	    q=A.head;
+    	    if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q=A.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    q=A.head;
+    	    for(j=0;j<i;j++) {
+    	    	if(j==i-1) {
+    	    		if(d[j].y!=0) {
+    	    		a=a+ d[j].x + "x^" + d[j].y ;
+    	    		}else {
+    	    			a=a+ d[j].x ;
+    	    		}
+    	    	}else {
+    	    		if(d[j].y!=0) {
+        	    		a=a+ d[j].x + "x^" + d[j].y + "+" ;
+        	    		}else {
+        	    			a=a+ d[j].x + "+";
+        	    		}
+    	    	}
+    	    	
+    	    }
+    	    }
+       }else if(poly == 'B') {
+    	    q=B.head;
+    	    if(q==null) {
+    	    	System.out.println("this polynomial is undset or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q=B.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    q=B.head;
+    	    for(j=0;j<i;j++) {
+    	    	if(j==i-1) {
+    	    		if(d[j].y!=0) {
+    	    		a=a+ d[j].x + "x^" + d[j].y ;
+    	    		}else {
+    	    			a=a+ d[j].x ;
+    	    		}
+    	    	}else {
+    	    		if(d[j].y!=0) {
+        	    		a=a+ d[j].x + "x^" + d[j].y + "+" ;
+        	    		}else {
+        	    			a=a+ d[j].x + "+";
+        	    		}
+    	    	}
+    	    	
+    	    }
+    	    }
+       }else if(poly == 'C') {
+    	    q = C.head;
+    	    if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q = C.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    q = C.head;
+    	    for(j=0;j<i;j++) {
+    	    	if(j==i-1) {
+    	    		if(d[j].y!=0) {
+    	    		a=a+ d[j].x + "x^" + d[j].y ;
+    	    		}else {
+    	    			a=a+ d[j].x ;
+    	    		}
+    	    	}else {
+    	    		if(d[j].y!=0) {
+        	    		a=a+ d[j].x + "x^" + d[j].y + "+" ;
+        	    		}else {
+        	    			a=a+ d[j].x + "+";
+        	    		}
+    	    	}
+    	    	
+    	    }
+    	    }
+       }else if(poly == 'R') {
+    	    q = R.head;
+    	    if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q = R.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    q = R.head;
+    	    for(j=0;j<i;j++) {
+    	    	if(j==i-1) {
+    	    		if(d[j].y!=0) {
+    	    		a=a+ d[j].x + "x^" + d[j].y ;
+    	    		}else {
+    	    			a=a+ d[j].x ;
+    	    		}
+    	    	}else {
+    	    		if(d[j].y!=0) {
+        	    		a=a+ d[j].x + "x^" + d[j].y + "+" ;
+        	    		}else {
+        	    			a=a+ d[j].x + "+";
+        	    		}
+    	    	}
+    	    	
+    	    }
+    	    }
+       }    		
+	return a;			
+	}
+	
+	public void clearPolynomial(char poly) {
+		if(poly == 'A') {
+			A.clear();
+			
+		}else if(poly == 'B') {
+			B.clear();
+		}
+		else if(poly == 'C') {
+			C.clear();
+		}
+		else if(poly == 'R') {
+			R.clear();
+		}
+	}
+	
+	public float evaluatePolynomial(char poly, float value) {
+		node q=null;
+		int i=0,j=0;
+		float sum = 0;
+		if(poly == 'A') {
+			q=A.head;
+			if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+	    	    while(q!=null) {
+	    	    	i++;
+	    	    	q=q.getNext();
+	    	    }
+	    	    java.awt.Point [] d = new java.awt.Point [i];
+	    	    for (j=0;j<i;j++) {
+	    			d[j]=new java.awt.Point ();
+	    		}
+	    	    q = A.head;
+	    	    for(j=0;j<i;j++) {
+	    	    	d[j]=(Point) q.getValue();
+	    	    	q=q.getNext();
+	    	    }
+	    	    
+	    	    for (j=0;j<i;j++) {
+	    	    	sum += ((d[j].x) *  pow(value , d[j].y)); 
+	    	    }
+			
+    	    }
+		}else if(poly == 'B') {
+			q=B.head;
+			if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q = B.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    
+    	    for (j=0;j<i;j++) {
+    	    	sum += ((d[j].x) *  pow(value , d[j].y)); 
+    	    }
+		}
+		}
+		else if(poly == 'C') {
+			q=C.head;
+			if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q = C.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    
+    	    for (j=0;j<i;j++) {
+    	    	sum += ((d[j].x) *  pow(value , d[j].y)); 
+    	    }
+    	    }
+		}
+		else if(poly == 'R') {
+			q=R.head;
+			if(q==null) {
+    	    	System.out.println("this polynomial is undet or cleared ");
+    	    }else {
+    	    while(q!=null) {
+    	    	i++;
+    	    	q=q.getNext();
+    	    }
+    	    java.awt.Point [] d = new java.awt.Point [i];
+    	    for (j=0;j<i;j++) {
+    			d[j]=new java.awt.Point ();
+    		}
+    	    q = R.head;
+    	    for(j=0;j<i;j++) {
+    	    	d[j]=(Point) q.getValue();
+    	    	q=q.getNext();
+    	    }
+    	    
+    	    for (j=0;j<i;j++) {
+    	    	sum += ((d[j].x) *  pow(value , d[j].y)); 
+    	    }
+		}
+		}
+		return sum;
+		
+	}
+	
+	public int[][] add(char poly1, char poly2){
+		node q1 =null;
+		node q2=null;
+		int i1=0 , i2=0 , j=0 ,i=0;	
+		if((poly1=='A'&&poly2=='B')||poly1=='B'&&poly2=='A') {
+			q1=A.head;
+			q2=B.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = B.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=B.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    
+    	    int tt=0;
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    			if(R.contains(d1[i])==false) {
+    	    			R.add(tt,d1[i]);
+    	    			tt++;
+    	    			}
+    	    			if(R.contains(d2[j])==false) {
+    	    			R.add(tt,d2[j]);
+    	    			tt++;
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+    	    	  	
+			}
+		}else if((poly1=='A'&&poly2=='C')||poly1=='C'&&poly2=='A') {
+			
+			q1=A.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+    	   
+		}
+		}
+		else if((poly1=='B'&&poly2=='C')||poly1=='C'&&poly2=='B') {
+			q1=B.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=B.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    	
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			R.add(d2[j]);
+    	    			}   	    	
+    	    }
+    	    }
+			
+		}
+		}
+		node q=R.head;
+	     int co=0;
+	    while(q!=null) {
+	    	co++;
+	    	q=q.getNext();
+	    }
+	    java.awt.Point [] s = new java.awt.Point [co];
+	    for (j=0;j<co;j++) {
+			s[j]=new java.awt.Point ();
+		}
+	    q=R.head;
+	    for(i=0;i<co;i++) {
+	    	s[i]=(Point) q.getValue();
+	    	q=q.getNext();
+	    }
+	    int k=0;
+	    for(i = 0; i < co ; i++)
+	    {
+	        for(j = i+1; j < co; )
+	        {
+	            if(s[j].y == s[i].y)
+	            {
+	            	s[i].x+=s[j].x;
+	                for(k = j; k < co -1; k++)
+	                {
+	                    s[k] = s[k+1];
+	                }
+	                co--;
+	            }
+	            else
+	            {
+	                j++;
+	            }
+	        }
+	    }
+	   
+	    int flag=1;
+        for (i=0;i<co&&flag==1;i++){
+        	flag=0;
+            for( j=0;j<co-i-1;j++){
+                if(s[j].y>s[j+1].y){
+                    java.awt.Point m=s[j];
+                    s[j]=s[j+1];
+                    s[j+1]=m;
+                    flag=1;
+                }
+            }
+        }
+	    int[][] arr =new int [co][2] ;
+	    int f=0;
+	    for(i=0;i<co;i++) {
+	    	for (j=0;j<2;j++) {
+	    		if(j==0) {
+	    			arr[i][j]=s[f].x;
+	    		}else {
+	    			arr[i][j]=s[f].y;  			
+	    		}
+	    		
+	    }
+	    	f++;
+	    }
+		
+		return arr;
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int[][] subtract(char poly1, char poly2){
+		node q1 =null;
+		node q2=null;
+		int i1=0 , i2=0 , j=0 ,i=0;	
+		if((poly1=='A'&&poly2=='B')) {
+			q1=A.head;
+			q2=B.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = B.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=B.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    		
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+    	    	 	
+			}	
+		}else if((poly1=='A'&&poly2=='C')) {
+			
+			q1=A.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	   
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    
+    	    }
+    	    }
+		}
+		}
+		else if((poly1=='B'&&poly2=='C')) {
+			q1=B.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=B.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    	
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+			
+		}
+		}
+		else if((poly1=='B'&&poly2=='A')) {
+			q1=B.head;
+			q2=A.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=B.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = A.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=A.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	   
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+			
+		}
+		}
+		
+		else if((poly1=='C'&&poly2=='A')) {
+			q1=C.head;
+			q2=A.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=C.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = A.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=A.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	 
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    		
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+			
+		}
+		}
+		else if((poly1=='C'&&poly2=='B')) {
+			q1=C.head;
+			q2=B.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=C.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = B.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=B.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	  
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+  
+    	    			if(!R.contains(d1[i])) {
+    	    			R.add(d1[i]);
+    	    			}
+    	    			if(!R.contains(d2[j])) {
+    	    			d2[j].x=-d2[j].x;
+    	    			R.add(d2[j]);
+    	    			}
+    	    		
+    	    	
+    	    }
+    	    }
+    	   
+		}
+		}
+		node q=R.head;
+	    int co=0;
+	    while(q!=null) {
+	    	co++;
+	    	q=q.getNext();
+	    }
+	    java.awt.Point [] s = new java.awt.Point [co];
+	    for (j=0;j<i1;j++) {
+			s[j]=new java.awt.Point ();
+		}
+	    q=R.head;
+	    int k=0;
+	    for(i=0;i<co;i++) {
+	    	s[i]=(Point) q.getValue();
+	    	q=q.getNext();
+	    }
+	    for(i = 0; i < co ; i++)
+	    {
+	        for(j = i+1; j < co; )
+	        {
+	            if(s[j].y == s[i].y)
+	            {
+	            	s[i].x+=s[j].x;
+	                for(k = j; k < co -1; k++)
+	                {
+	                    s[k] = s[k+1];
+	                }
+	                co--;
+	            }
+	            else
+	            {
+	                j++;
+	            }
+	        }
+	    }
+	    int flag=1;
+        for (i=0;i<co&&flag==1;i++){
+        	flag=0;
+            for( j=0;j<co-i-1;j++){
+                if(s[j].y>s[j+1].y){
+                    java.awt.Point m=s[j];
+                    s[j]=s[j+1];
+                    s[j+1]=m;
+                    flag=1;
+                }
+            }
+        }
+	    int[][] arr =new int [co][2] ;
+	    int f=0;
+	    for(i=0;i<co;i++) {
+	    	for (j=0;j<2;j++) {
+	    		if(j==0) {
+	    			arr[i][j]=s[f].x;
+	    		}else {
+	    			arr[i][j]=s[f].y;
+	    		}
+	    		
+	    }
+	    	f++;
+	    }
+		
+		return arr;
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int[][] multiply(char poly1, char poly2){
+		
+		node q1 =null;
+		node q2=null;
+		int i1=0 , i2=0 , j=0 ,i=0;	
+		if((poly1=='A'&&poly2=='B')||poly1=='B'&&poly2=='A') {
+			q1=A.head;
+			q2=B.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = B.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=B.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    Point qq=new Point();
+    	    int tt=0;
+    	    for(i=0;i<d1.length;i++) {
+    	    	qq.x=0;
+    	    	qq.y=0;
+    	    	for(j=0;j<d2.length;j++) {
+    	    		
+    	    		qq.x=(d1[i].x * d2[j].x);
+    	    		qq.y=(d1[i].y+ d2[j].y);
+    	    		R.add(tt,qq);
+    	    		tt++;
+    	    		  	   	    		
+    	    }
+    	    	
+    	    }
+    	    	  	
+			}
+		}else if((poly1=='A'&&poly2=='C')||poly1=='C'&&poly2=='A') {
+			
+			q1=A.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=A.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	    
+    	    int tt=0;
+    	    Point qq=new Point ();
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    		qq.x+=d1[i].x * d2[j].x;
+    	    		qq.y+=d1[i].y+ d2[j].y;
+    	    		
+    	    		R.add(tt,qq);
+    	    		tt++;
+    	    }
+    	    }
+    	   
+		}
+		}
+		else if((poly1=='B'&&poly2=='C')||poly1=='C'&&poly2=='B') {
+			q1=B.head;
+			q2=C.head;
+			if(q1==null||q2==null) {
+				throw new IllegalArgumentException ("this polynomial is undet or cleared ");
+			}else {
+    	    while(q1!=null) {
+    	    	i1++;
+    	    	q1=q1.getNext();
+    	    }
+    	    java.awt.Point [] d1 = new java.awt.Point [i1];
+    	    for (j=0;j<i1;j++) {
+    			d1[j]=new java.awt.Point ();
+    		}
+    	    q1=B.head;
+    	    for(j=0;j<i1;j++) {
+    	    	d1[j]=(Point) q1.getValue();
+    	    	q1=q1.getNext();
+    	    }
+    	    q2 = C.head;
+    	    while(q2!=null) {
+    	    	i2++;
+    	    	q2=q2.getNext();
+    	    }
+    	    java.awt.Point [] d2 = new java.awt.Point [i2];
+    	    for (j=0;j<i2;j++) {
+    			d2[j]=new java.awt.Point ();
+    		}
+    	    q2=C.head;
+    	    for(j=0;j<i2;j++) {
+    	    	d2[j]=(Point) q2.getValue();
+    	    	q2=q2.getNext();
+    	    }
+    	   int tt=0;
+    	    Point qq=new Point();
+    	    for(i=0;i<d1.length;i++) {
+    	    	for(j=0;j<d2.length;j++) {
+    	    		qq.x+=d1[i].x * d2[j].x;
+    	    		qq.y+=d1[i].y+ d2[j].y;
+    	    		
+    	    		R.add(tt,qq);
+    	    		tt++;
+    	    }
+    	    }
+			
+		}
+		}
+		node q=R.head;	
+	    int co=0;
+	    int k=0;
+	    while(q!=null) {
+	    	co++;
+	    	q=q.getNext();
+	    }
+	    java.awt.Point [] s = new java.awt.Point [co];
+	    for (j=0;j<i1;j++) {
+			s[j]=new java.awt.Point ();
+		}
+	    q=R.head;
+	    for(i=0;i<co;i++) {
+	    	s[i]=(Point) q.getValue();
+	    	q=q.getNext();
+	    }
+	    
+	    for(i = 0; i < co ; i++)
+	    {
+	        for(j = i+1; j < co; )
+	        {
+	            if(s[j].y == s[i].y)
+	            {
+	            	s[i].x+=s[j].x;
+	                for(k = j; k < co-1; k++)
+	                {
+	                    s[k] = s[k+1];
+	                }
+	                co--;
+	            }
+	            else
+	            {
+	                j++;
+	            }
+	        }
+	    }
+	    
+	    int flag=1;
+        for (i=0;i<co&&flag==1;i++){
+        	flag=0;
+            for( j=0;j<co-i-1;j++){
+                if(s[j].y>s[j+1].y){
+                    java.awt.Point m=s[j];
+                    s[j]=s[j+1];
+                    s[j+1]=m;
+                    flag=1;
+                }
+            }
+        }
+	    int[][] arr =new int [co][2] ;
+	    int f=0;
+	    for(i=0;i<co;i++) {
+	    	for (j=0;j<2;j++) {
+	    		if(j==0) {
+	    			arr[i][j]=s[f].x;
+	    		}else {
+	    			arr[i][j]=s[f].y;
+	    		}
+	    		
+	    }
+	    	f++;
+	    }
+		
+		return arr;
+		}
+		
+	
+	
+
+	
+	
+	
+		
+	}
