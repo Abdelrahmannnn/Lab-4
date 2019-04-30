@@ -1,0 +1,167 @@
+
+
+
+package eg.edu.alexu.csd.datastructure.linkedList.cs41_cs13;
+
+public class Double implements ILinkedList{
+	
+	Dnode header,trailer;
+	public Double() {
+		header = new Dnode(null); 
+		trailer = new Dnode(null); 
+		header.setnext(trailer); 
+
+		}
+	
+	public void add (int index,Object element ) {
+		Dnode w = new Dnode (element);
+		Dnode t=header;
+		t=t.getNext();
+		Dnode y=header.getNext();
+		if(index==0) {
+			w.setnext(y);
+			w.setprev(header);
+			header.setnext(w);
+			y.setprev(w);
+		}else {
+		for(int i=0;i<index -1;i++) {
+			y=y.getNext();
+		}
+		w.setnext(y.getNext());
+		y.setnext(w);
+		w.setprev(y);
+		y.getNext().setprev(w);
+		
+	}
+	}
+	
+	public void add(Object element) {
+		Dnode w = new Dnode (element);
+		Dnode t=header.getNext();
+		if(t==trailer) {
+			w.setprev(header);
+			w.setnext(trailer);
+			trailer.setprev(w);
+			header.setnext(w);
+		}else {
+		while(t.getNext()!=trailer) {
+			t=t.getNext();
+		}
+		t.setnext(w);
+		w.setprev(t);
+		w.setnext(trailer);
+		trailer.setprev(w);
+		}
+	}
+	
+	public Object get(int index) {
+		int i=0;
+		Dnode t=header.getNext();
+		if(header.getNext()==trailer) {
+			return null;
+		}
+		while(i<=index) {
+			if(i==index) {
+				return t.getValue();
+			}
+			t=t.getNext();
+		}
+		return null;
+		
+	}
+	
+	public void set(int index, Object element) {
+		int i=0;
+		Dnode t=header.getNext();
+		
+		while(i<=index&&t!=trailer) {
+			if(i==index) {
+				t.setvalue(element);
+			}
+			t=t.getNext();
+		}
+	}
+	
+	public void clear() {
+		Dnode t=header;
+		Dnode temp=t;
+		while(temp!=trailer) {
+			temp=t.getNext();
+			t.setnext(null);
+			t.setprev(null);
+			t=temp;
+		}
+	}
+	
+	public boolean isEmpty() {
+		if(header.getNext()==trailer) {
+			return true;
+		}
+		return false ;
+	}
+	
+	public void remove(int index) {
+		Dnode t=header.getNext();
+		Dnode current =header.getNext();
+		for(int i=0;i<index-1;i++) {
+			t=t.getNext();
+		}
+		current=t.getNext();
+		current.getNext().setprev(t);
+		t.setnext(current.getNext());
+		current.setnext(null);
+		current.setprev(null);
+	}
+	
+	public int size() {
+		if(header.getNext()==trailer) {
+			return 0;
+		}
+		Dnode t=header.getNext();
+		int count =0;
+		while(t!=trailer) {
+			count++;
+			t=t.getNext();
+		}
+		return count ;
+	}
+	
+	public ILinkedList sublist(int fromIndex, int toIndex) {
+		int i=0;
+		Dnode t=header.getNext();
+		Double y = new Double();
+		while(i<=toIndex) {
+			if(i==fromIndex) {
+				header.setnext(t);
+				t.setprev(header);
+			}
+			if(i==toIndex) {
+				t.setnext(trailer);
+				trailer.setprev(t);
+			}
+			t=t.getNext();
+		}
+		return y;
+	}
+	
+	public boolean contains(Object o) {
+		Dnode t=header.getNext();
+		if(header.getNext()==trailer) {
+			return false;
+		}
+		while(t!=trailer) {
+			if(t.getValue()==o) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}
